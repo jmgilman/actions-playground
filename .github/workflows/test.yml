@@ -8,7 +8,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run hello action
-        uses: jmgilman/actions-playground/actions/hello@actions/hello/v1.0.0
+      - name: Install Earthly
+        uses: earthly/actions-setup@v1
         with:
-          who-to-greet: "Mona the Octocat"
+          version: "latest"
+      - name: Test
+        run: earthly +test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
