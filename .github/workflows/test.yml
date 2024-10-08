@@ -1,6 +1,7 @@
 name: "Test"
 on:
   - push
+  - pull_request
 
 jobs:
   test:
@@ -8,6 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Earthly
+      - name: Testing
         run: |
-          git rev-parse HEAD
+          echo "$GITHUB_REF"
