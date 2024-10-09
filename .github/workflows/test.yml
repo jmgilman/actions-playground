@@ -11,4 +11,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Testing
         run: |
-          git rev-parse --abbrev-ref HEAD
+          echo $GITHUB_HEAD_REF
+          echo $GITHUB_REF
